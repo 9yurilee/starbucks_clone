@@ -24,9 +24,11 @@ body {
 }
 
 header {
-  padding: 0 3%;
-  height: 120px;
+  // padding: 0 3%;
+  // height: 120px;
   background-color: #f6f5f0;
+  position: relative;
+  border-bottom: 1px solid #c8c8c8;
   > .inner {
     @include inner(120px);
   }
@@ -183,6 +185,18 @@ header {
           }
         }
       }
+    }
+  }
+  .badges {
+    position: absolute;
+    top: 132px;
+    right: 12px;
+    .badge {
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
     }
   }
 }
