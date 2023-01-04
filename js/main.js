@@ -14,6 +14,3 @@ searchInputEl.addEventListener("blur", function () {
   searchEl.classList.remove("focused");
   searchInputEl.setAttribute("placeholder", ""); // html 속성 지정할 때
 });
-
-const title = document.querySelector(".item-title");
-const bottom = document.querySelector(".item-contents");
