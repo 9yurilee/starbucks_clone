@@ -7,6 +7,7 @@ body {
   font-weight: 400;
   line-height: 1.4;
   font-family: "Noto Sans KR", sans-serif;
+  height: 3000px;
 }
 
 @mixin vc() {
@@ -24,10 +25,10 @@ body {
 }
 
 header {
-  // padding: 0 3%;
-  // height: 120px;
+  width: 100%;
   background-color: #f6f5f0;
-  position: relative;
+  position: fixed; // 부모로서의 기준이 되기에 충분
+  top: 0;
   border-bottom: 1px solid #c8c8c8;
   > .inner {
     @include inner(120px);
