@@ -11,7 +11,7 @@ header {
   height: 120px;
   background-color: #f6f5f0;
 }
-header .inner {
+header > .inner {
   width: 1100px;
   height: 120px;
   margin: 0 auto;
@@ -92,63 +92,85 @@ header .sub-menu .search .material-icons {
   right: 5px;
   transition: 0.4s;
 }
-header .main-menu .menu {
+header .main-menu {
   display: flex;
   position: absolute;
   right: 0;
   bottom: 0;
+  z-index: 1;
 }
-header .main-menu .menu .item {
+header .main-menu .item {
   font-size: 13px;
 }
-header .main-menu .menu .item .item-title {
+header .main-menu .item:hover {
+  display: block;
+  background-color: #333;
+  border-radius: 6px 6px 0 0;
+}
+header .main-menu .item:hover .item__name {
+  color: #669900;
+  cursor: pointer;
+}
+header .main-menu .item:hover .item__contents {
+  display: block;
+}
+header .main-menu .item .item__name {
   padding: 10px 20px 34px 20px;
 }
-header .main-menu .menu .item .item-title:hover {
-  display: block;
-  color: #669900;
-  background-color: #333;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-header .main-menu .menu .item .item-contents {
-  position: fixed;
+header .main-menu .item .item__contents {
+  display: none;
   left: 0;
-  background-color: #333;
   width: 100%;
+  position: fixed;
+  background-color: #333;
+  box-sizing: border-box;
 }
-header .main-menu .menu .item .item-contents .contents-menu {
-  padding: 10px 0 20px;
+header .main-menu .item .item__contents .contents__menu {
   width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
-}
-header .main-menu .menu .item .item-contents .contents-menu ul {
-  margin-right: 100px;
-}
-header .main-menu .menu .item .item-contents .contents-menu h4 {
   color: white;
-  font-size: 14px;
-  margin: 20px 0 10px;
 }
-header .main-menu .menu .item .item-contents .contents-menu li {
-  color: #ddd;
-  line-height: 2;
-}
-header .main-menu .menu .item .item-contents .contents-bottom {
-  color: #fff;
-  background-image: url("../images/reserve_bg.jpg");
-}
-header .main-menu .menu .item .item-contents .contents-bottom .bottom-contents {
+header .main-menu .item .item__contents .contents__menu > ul {
   width: 1100px;
-  margin: auto;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  padding: 20px 0;
+  box-sizing: border-box;
 }
-header .main-menu .menu .item .item-contents .contents-bottom .bottom-contents h4 {
-  color: #bbb;
+header .main-menu .item .item__contents .contents__menu > ul > li {
+  width: 220px;
+  height: 100%;
 }
-header .main-menu .menu .item .item-contents .contents-bottom .bottom-contents p {
+header .main-menu .item .item__contents .contents__menu > ul > li h4 {
+  padding: 3px 0 12px 0;
+  font-size: 14px;
+  color: #fff;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li {
+  padding: 5px 0;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li:hover {
   color: #669900;
 }
-header .main-menu .menu .item .item-contents .contents-bottom .bottom-contents p :first-child {
-  color: red;
+header .main-menu .item .item__contents .contents__texture {
+  padding: 26px 0;
+  background-image: url("../images/main_menu_pattern.jpg");
+  font-size: 12px;
+}
+header .main-menu .item .item__contents .contents__texture > div {
+  width: 1100px;
+  margin: auto;
+}
+header .main-menu .item .item__contents .contents__texture > div h4 {
+  color: #bbb;
+  font-weight: 700;
+}
+header .main-menu .item .item__contents .contents__texture > div p {
+  color: #669900;
+  margin: 4px 0 14px;
 }/*# sourceMappingURL=main.css.map */

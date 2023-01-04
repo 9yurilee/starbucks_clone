@@ -7,7 +7,6 @@ body {
   font-weight: 400;
   line-height: 1.4;
   font-family: "Noto Sans KR", sans-serif;
-  // background-color: red;
 }
 
 @mixin vc() {
@@ -17,15 +16,19 @@ body {
   margin: auto 0;
 }
 
+@mixin inner($h) {
+  width: 1100px;
+  height: #{$h};
+  margin: 0 auto;
+  position: relative;
+}
+
 header {
   padding: 0 3%;
   height: 120px;
   background-color: #f6f5f0;
-  .inner {
-    width: 1100px;
-    height: 120px;
-    margin: 0 auto;
-    position: relative;
+  > .inner {
+    @include inner(120px);
   }
   .logo {
     width: 75px;
@@ -99,78 +102,83 @@ header {
     }
   }
   .main-menu {
-    // position: relative;
-    .menu {
-      display: flex;
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      // background-color: pink;
-      .item {
-        font-size: 13px;
-        .item-title {
-          padding: 10px 20px 34px 20px;
-          &:hover {
-            display: block;
-            color: $green;
-            background-color: $black;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-          }
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    .item {
+      font-size: 13px;
+      // item위에 hover시 contents에도 hover 추가해야하므로
+      // item__name이 아닌, item에 호버
+      &:hover {
+        display: block;
+        background-color: $black;
+        border-radius: 6px 6px 0 0;
+        .item__name {
+          color: $green;
+          cursor: pointer;
         }
-        .item-contents {
-          // display: none;
-          // display: block;
-          position: fixed;
-          // bottom: -10;
-          left: 0;
-          background-color: $black;
-          width: 100%;
-          // padding: 50px 0;
-          // box-sizing: border-box;
-          // background-color: red;
-          .contents-menu {
-            // background-color: navy;
-            padding: 10px 0 20px;
-            // 패딩주는데 왜 잘리지??? box-sizing 해도 안됨...?ㅎ
-
-            width: 1100px;
-            margin: auto;
+        .item__contents {
+          display: block;
+        }
+      }
+      .item__name {
+        padding: 10px 20px 34px 20px;
+      }
+      .item__contents {
+        display: none;
+        left: 0;
+        width: 100%;
+        position: fixed;
+        background-color: $black;
+        box-sizing: border-box;
+        .contents__menu {
+          width: 1100px;
+          margin: 0 auto;
+          display: flex;
+          color: white;
+          > ul {
+            @include inner("");
             display: flex;
-            ul {
-              margin-right: 100px;
-              // margin-bottom: 30px;
-            }
-            h4 {
-              color: white;
-              font-size: 14px;
-              margin: 20px 0 10px;
-            }
-            li {
-              color: #ddd;
-              line-height: 2;
-            }
-          }
-          .contents-bottom {
-            // position: absolute;
-            // bottom: 0;
-            // left: 0;
-            // right: 0;
-            color: #fff;
-            background-image: url("../images/reserve_bg.jpg");
-            .bottom-contents {
-              width: 1100px;
-              margin: auto;
-              // background-color: navajowhite;
+            padding: 20px 0;
+            box-sizing: border-box;
+            > li {
+              width: 220px; // 메뉴당 width
+              height: 100%;
               h4 {
-                color: #bbb;
+                padding: 3px 0 12px 0;
+                font-size: 14px;
+                color: #fff;
               }
-              p {
-                color: $green;
-                :first-child {
-                  color: red; // 왜 안먹히지???????????????????????????
+              ul {
+                li {
+                  padding: 5px 0;
+                  font-size: 12px;
+                  color: #999;
+                  cursor: pointer;
+                  &:hover {
+                    color: $green;
+                  }
                 }
               }
+            }
+          }
+        }
+        .contents__texture {
+          padding: 26px 0;
+          background-image: url("../images/main_menu_pattern.jpg");
+          font-size: 12px;
+          > div {
+            width: 1100px;
+            margin: auto;
+            h4 {
+              color: #bbb;
+              font-weight: 700;
+            }
+            p {
+              color: $green;
+              margin: 4px 0 14px;
             }
           }
         }
