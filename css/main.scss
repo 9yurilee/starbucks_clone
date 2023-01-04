@@ -1,5 +1,7 @@
 $green: #669900;
 $black: #333;
+$brown: #592b18;
+$gold: #d9aa8a;
 
 body {
   color: $black;
@@ -24,13 +26,40 @@ body {
   position: relative;
 }
 
+@mixin btn($color) {
+  text-decoration: none;
+  width: 130px;
+  padding: 10px;
+  border: 2px solid $color;
+  border-radius: 4px;
+  color: $color;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  transition: 0.4s;
+  &:hover {
+    @if ($color == white) {
+      color: #333;
+    } @else {
+      color: white;
+    }
+    background-color: $color;
+  }
+}
+
 header {
   width: 100%;
   background-color: #f6f5f0;
   position: fixed; // 부모로서의 기준이 되기에 충분
   top: 0;
   border-bottom: 1px solid #c8c8c8;
+  z-index: 9;
   > .inner {
+    // height: 120px;
     @include inner(120px);
   }
   .logo {
@@ -198,6 +227,58 @@ header {
       margin-bottom: 12px;
       box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
       cursor: pointer;
+    }
+  }
+}
+
+// SECTION
+.visual {
+  margin-top: 120px;
+  background-image: url("../images/visual_bg.jpg");
+  background-position: center;
+  .inner {
+    @include inner(646px);
+  }
+  .title {
+    position: absolute;
+    top: 88px;
+    left: -10px;
+    .btn {
+      position: absolute; // title이 부모
+      top: 259px;
+      left: 173px;
+      @include btn($brown);
+    }
+  }
+  .cup1 {
+    &.image {
+      position: absolute;
+      bottom: 0;
+      right: -47px;
+    }
+    &.text {
+      position: absolute;
+      top: 38px;
+      right: 171px;
+    }
+  }
+  .cup2 {
+    &.image {
+      position: absolute;
+      bottom: 0;
+      right: 162px;
+    }
+    &.text {
+      position: absolute;
+      top: 321px;
+      right: 416px;
+    }
+  }
+  .spoon {
+    &.image {
+      position: absolute;
+      bottom: 0;
+      left: 275px;
     }
   }
 }
