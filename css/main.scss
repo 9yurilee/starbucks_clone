@@ -161,7 +161,7 @@ header {
       }
       .material-icons {
         @include vc();
-        height: 24px; // 요소에  너비가 포함되어있어야하므로\
+        height: 24px; // 요소에 너비가 포함되어있어야하므로\
         right: 5px;
         transition: 0.4s;
       }
@@ -210,7 +210,7 @@ header {
             padding: 20px 0;
             box-sizing: border-box;
             > li {
-              width: 220px; // 메뉴당 width
+              width: 220px;
               height: 100%;
               h4 {
                 padding: 3px 0 12px 0;
@@ -278,7 +278,7 @@ header {
     top: 88px;
     left: -10px;
     .btn {
-      position: absolute; // title이 부모
+      position: absolute; // .title이 부모
       top: 259px;
       left: 173px;
       @include btn($brown);
@@ -705,7 +705,7 @@ header {
     .medal {
       width: 334px;
       height: 334px;
-      perspective: 600px; // 원근거리
+      perspective: 600px;
       .front,
       .back {
         width: 334px;
@@ -744,8 +744,6 @@ header {
   background-image: url("../images/find_store_bg.jpg");
   .inner {
     @include inner(400px);
-    // background-color: $green;
-    // display: flex;
     .texture1 {
       position: absolute;
       top: 0;
