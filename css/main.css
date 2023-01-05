@@ -600,7 +600,6 @@ header .badges .badge {
   height: 700px;
   margin: 0 auto;
   position: relative;
-  color: orange;
 }
 .youtube .inner .floating1 {
   position: absolute;
@@ -612,11 +611,6 @@ header .badges .badge {
   top: 350px;
   left: 150px;
 }
-.youtube .inner .floating3 {
-  position: absolute;
-  bottom: -200px;
-  right: 0;
-}
 
 .season-product {
   background-image: url(../images/season_product_bg.jpg);
@@ -627,6 +621,11 @@ header .badges .badge {
   margin: 0 auto;
   position: relative;
   display: flex;
+}
+.season-product .inner .floating3 {
+  position: absolute;
+  right: 0;
+  top: -200px;
 }
 .season-product .inner .product {
   position: absolute;
@@ -712,7 +711,9 @@ header .badges .badge {
 .pick-your-favorite {
   background-image: url("../images/favorite_bg.jpg");
   background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 .pick-your-favorite .inner {
   width: 1100px;
@@ -726,8 +727,8 @@ header .badges .badge {
   width: 362px;
   margin-left: 100px;
   display: flex;
-  justify-content: flex-end;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .pick-your-favorite .inner .text-group .title {
   margin-bottom: 40px;
@@ -765,6 +766,7 @@ header .badges .badge {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 .reserve-store .inner {
   width: 1100px;
@@ -778,12 +780,22 @@ header .badges .badge {
 .reserve-store .inner .medal {
   width: 334px;
   height: 334px;
+  perspective: 600px;
+}
+.reserve-store .inner .medal .front,
+.reserve-store .inner .medal .back {
+  width: 334px;
+  height: 334px;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transition: 1s;
 }
 .reserve-store .inner .medal .front {
   position: absolute;
+  transform: rotateY(0deg);
 }
 .reserve-store .inner .medal .back {
-  position: absolute;
+  transform: rotateY(-180deg);
 }
 .reserve-store .inner .medal .back .btn {
   text-decoration: none;
@@ -809,6 +821,12 @@ header .badges .badge {
 .reserve-store .inner .medal .back .btn:hover {
   color: white;
   background-color: #333;
+}
+.reserve-store .inner .medal:hover .front {
+  transform: rotateY(180deg);
+}
+.reserve-store .inner .medal:hover .back {
+  transform: rotateY(0deg);
 }
 
 .find-store {

@@ -556,7 +556,6 @@ header {
   }
   .inner {
     @include inner(700px);
-    color: orange;
     .floating1 {
       position: absolute;
       top: 50px;
@@ -567,11 +566,6 @@ header {
       top: 350px;
       left: 150px;
     }
-    .floating3 {
-      position: absolute;
-      bottom: -200px;
-      right: 0;
-    }
   }
 }
 
@@ -581,6 +575,11 @@ header {
   .inner {
     @include inner(400px);
     display: flex;
+    .floating3 {
+      position: absolute;
+      right: 0;
+      top: -200px;
+    }
     .product {
       position: absolute;
     }
@@ -601,11 +600,14 @@ header {
   }
 }
 
+// RESERVE-COFFEE
 .reserve-coffee {
   background-image: url("../images/reserve_bg.jpg");
+
   .inner {
     @include inner(400px);
     display: flex;
+
     .reserve-logo {
       position: absolute;
       top: 110px;
@@ -630,7 +632,9 @@ header {
 .pick-your-favorite {
   background-image: url("../images/favorite_bg.jpg");
   background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 
   .inner {
     @include inner(706px);
@@ -640,8 +644,8 @@ header {
       width: 362px;
       margin-left: 100px;
       display: flex;
-      justify-content: flex-end;
       flex-wrap: wrap;
+      justify-content: flex-end;
       .title {
         margin-bottom: 40px;
       }
@@ -663,7 +667,8 @@ header {
   background-image: url("../images/reserve_store_bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; // 더 넓은 너비에 맞춤
+  background-attachment: fixed;
   .inner {
     @include inner(600px);
     display: flex;
@@ -672,18 +677,35 @@ header {
     .medal {
       width: 334px;
       height: 334px;
+      perspective: 600px; // 원근거리
+      .front,
+      .back {
+        width: 334px;
+        height: 334px;
+        backface-visibility: hidden;
+        transition: 1s;
+      }
       .front {
-        position: absolute;
+        position: absolute; // 겹치게 할 수 있음
+        transform: rotateY(0deg);
       }
       .back {
-        position: absolute;
+        transform: rotateY(-180deg);
         .btn {
-          @include btn($black);
-          position: absolute; // 여기서 relative가 inner가 되는구나
+          @include btn($black); //가로너비 지정돼있음
+          position: absolute;
           top: 240px;
           left: 0;
           right: 0;
           margin: auto;
+        }
+      }
+      &:hover {
+        .front {
+          transform: rotateY(180deg);
+        }
+        .back {
+          transform: rotateY(0deg);
         }
       }
     }
