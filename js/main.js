@@ -100,13 +100,6 @@ new Swiper(".awards .swiper-container", {
   }
 });
 
-//To-Top
-const toTopEl = document.querySelector(".to-top");
-
-toTopEl.addEventListener("click", function () {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
 // FLOATING
 function random(min, max) {
   return parseFloat((Math.random() * (max - min) + min).toFixed(2));
@@ -124,3 +117,41 @@ function floatingObject(selector, delay, size) {
 floatingObject(".floating1", 1, 15);
 floatingObject(".floating2", 0.5, 15);
 floatingObject(".floating3", 1.5, 20);
+
+const spyEls = document.querySelectorAll("div.scroll-spy");
+
+spyEls.forEach(function (spyEl) {
+  // spyEl이라는 요소 감시
+  // 0: TOP, 1: BOTTOM
+  new ScrollMagic.Scene({ triggerElement: spyEl, triggerHook: 0.8 })
+    .setClassToggle(spyEl, "show")
+    .addTo(new ScrollMagic.Controller()); // 특정 요소 감시
+});
+
+// YEAR
+const thisYear = document.querySelector(".this-year");
+thisYear.textContent = new Date().getFullYear();
+
+//To-Top
+const toTopEl = document.querySelector("#to-top");
+
+window.addEventListener(
+  "scroll",
+  _.throttle(function () {
+    if (window.scrollY > 500) {
+      gsap.to(toTopEl, 0.3, {
+        opacity: 1,
+        display: "flex"
+      });
+    } else {
+      gsap.to(toTopEl, 0.6, {
+        opacity: 0,
+        display: "none"
+      });
+    }
+  }, 300)
+);
+
+toTopEl.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
