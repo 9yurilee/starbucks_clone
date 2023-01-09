@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2015", // ts에서 js로 변환 할 버전
+    "module": "ESNext", // ES의 최신 버전으로 사용하겠다!
+    "moduleResolution": "Node", //module의 해석방식 지정. index라는 js 파일 생략가능
+    "esModuleInterop": true, // esM
+    "lib": ["ESNext", "DOM"], //
+    "strict": true //
+  },
+  "include": ["src/**/*.ts"], // 컴파일 할 목록 : src폴더 속의 모든 파일의 모든 ts파일을 포함
+  "exclude": ["node_modules"] // 컴파일 할 때 제외시킬 목록
+}
